@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "app.py": {
+      "maxDuration": 30,
+      "excludeFiles": "{archive/**,public/**,.claude/**,**/*.bak,data/etlex.utf-8,import_dictionary.py,import_legacy_words.py}"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thai Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div class="wrap">
+  <header>
+    <h1 class="logo" aria-label="Thai Flashcards">
+      <span class="tile" aria-hidden="true"><span class="back"></span><span class="front"></span><span class="moon"></span><span class="star"></span></span>
+      <span class="name" aria-hidden="true"><b lang="th">ไทย</b><span>FLASHCARD</span></span>
+    </h1>
+    <div class="head-right">
+      <div class="status" id="status" role="status">Connecting…</div>
+      <!-- script.js shows one of these: Google's own sign-in button for guests, or Sign out for signed-in people -->
+      <div id="google-button" hidden></div>
+      <button class="btn small" id="signout" type="button" hidden>Sign out</button>      <button class="switch" id="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Night mode">
+        <span class="sky"></span><span class="cloud c1"></span><span class="cloud c2"></span><span class="knob"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" id="tab-sentence" aria-controls="panel-sentence" data-tab="sentence">Sentence</button>
+    <button class="tab" role="tab" id="tab-vocab" aria-controls="panel-vocab" data-tab="vocab">Vocabulary <span id="vocab-count"></span></button>
+    <button class="tab" role="tab" id="tab-review" aria-controls="panel-review" data-tab="review">Review</button>
+  </div>
+
+  <section class="panel" id="panel-sentence" role="tabpanel" aria-labelledby="tab-sentence">
+    <form class="row-form" id="sentence-form">
+      <input type="text" id="sentence-input" value="I have breakfast" placeholder="Type a sentence, e.g. I have breakfast" aria-label="English sentence" autocomplete="off">
+      <button class="btn primary" type="submit">Split into words</button>
+    </form>
+    <div id="tokens"></div>
+  </section>
+
+  <section class="panel" id="panel-vocab" role="tabpanel" aria-labelledby="tab-vocab" hidden>
+    <form class="row-form" id="add-form">
+      <div class="field"><label class="label" for="add-en">English</label><input type="text" id="add-en" placeholder="water" autocomplete="off"></div>
+      <div class="field"><label class="label" for="add-th">Thai</label><input type="text" id="add-th" placeholder="น้ำ" lang="th" autocomplete="off"></div>
+      <div class="field" style="flex: 0 0 auto; justify-content: flex-end; flex-direction: row; flex-wrap: wrap">
+        <button class="btn" type="button" id="suggest-btn" hidden>Suggest Thai</button>
+        <button class="btn primary" type="submit">Add word</button>
+      </div>
+    </form>
+    <p class="msg" id="add-msg" aria-live="polite"></p>
+    <input type="text" id="filter" placeholder="Search your words" aria-label="Search your words" autocomplete="off">
+    <div id="vocab-list"></div>
+  </section>
+
+  <section class="panel" id="panel-review" role="tabpanel" aria-labelledby="tab-review" hidden>
+    <div id="review"></div>
+  </section>
+</div>
+<p class="credit" id="credit" hidden>Word meanings: this product is created by the adaptation of LEXiTRON developed by NECTEC.</p>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

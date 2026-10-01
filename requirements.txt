@@ -1,0 +1,7 @@
+# Everything the app needs to run online. Vercel installs these when it builds the project.
+Flask==3.1.3
+psycopg[binary]==3.3.6        # talks to Postgres (Neon)
+google-auth==2.59.1           # checks Google sign-in proofs
+requests==2.34.2              # used by google-auth to fetch Google's public keys
+spacy==3.8.16                 # grammar labels (noun, verb, ...)
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl

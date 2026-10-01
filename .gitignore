@@ -1,0 +1,19 @@
+# Secrets and private data: these must NEVER be uploaded to GitHub
+.env
+.secret_key
+flashcards.db
+flashcards.db.*
+
+# Things that can be rebuilt
+.venv/
+__pycache__/
+*.pyc
+
+# Local tool settings
+.claude/
+
+# Old backup of the project before it was split into files
+archive/
+
+# The raw dictionary (17 MB). The app uses data/dictionary.db, which is built from it by import_dictionary.py
+data/etlex.utf-8
