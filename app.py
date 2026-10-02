@@ -91,6 +91,17 @@ def clean(value):
     return value.strip() if isinstance(value, str) else ""
 
 
+@app.after_request
+def add_safety_headers(response):
+    """Runs on every reply this server sends: a few standard protections, and a rule that per-person data is never cached."""
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")                       # browsers must not guess file types
+    response.headers.setdefault("X-Frame-Options", "DENY")                                 # nobody may embed this page in theirs
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")      # don't leak full page addresses
+    if request.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store"   # every API answer is about one person: no cache may keep it
+    return response
+
+
 @app.before_request
 def make_sure_tables_exist():
     """Online there is no start-up step we control, so check once per server process that the tables exist."""
